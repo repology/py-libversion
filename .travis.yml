@@ -1,8 +1,10 @@
 language: python
-sudo: false
+sudo: true
 python:
   - 3.4
   - 3.5
   - 3.6
+before_script:
+  - wget -qO- https://github.com/repology/libversion/archive/master.tar.gz | tar -xzf- && ( cd libversion-master && cmake . && make && sudo make install )
 script:
   - python setup.py test
