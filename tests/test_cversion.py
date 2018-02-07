@@ -19,22 +19,23 @@
 # THE SOFTWARE.
 
 import unittest
-from libversion import *
+
+from libversion import ANY_IS_PATCH_LEFT, ANY_IS_PATCH_RIGHT, P_IS_PATCH_LEFT, P_IS_PATCH_RIGHT, version_compare
 
 
 class TestLibVersion(unittest.TestCase):
     def test_cversion_compare_no_flags(self):
-        self.assertEqual(version_compare("001.001", "1.1"), 0)
-        self.assertEqual(version_compare("1.0010", "1.01"), 1)
-        self.assertEqual(version_compare("1.0", "1.0a"), -1)
+        self.assertEqual(version_compare('001.001', '1.1'), 0)
+        self.assertEqual(version_compare('1.0010', '1.01'), 1)
+        self.assertEqual(version_compare('1.0', '1.0a'), -1)
 
     def test_cversion_compare_flag_p_is_patch(self):
-        self.assertEqual(version_compare("1.0p1", "1.0p1", P_IS_PATCH_RIGHT), -1)
-        self.assertEqual(version_compare("1.0p1", "1.0p1", P_IS_PATCH_LEFT), 1)
+        self.assertEqual(version_compare('1.0p1', '1.0p1', P_IS_PATCH_RIGHT), -1)
+        self.assertEqual(version_compare('1.0p1', '1.0p1', P_IS_PATCH_LEFT), 1)
 
     def test_cversion_compare_flag_any_is_patch(self):
-        self.assertEqual(version_compare("1.0a1", "1.0a1", ANY_IS_PATCH_RIGHT), -1)
-        self.assertEqual(version_compare("1.0a1", "1.0a1", ANY_IS_PATCH_LEFT), 1)
+        self.assertEqual(version_compare('1.0a1', '1.0a1', ANY_IS_PATCH_RIGHT), -1)
+        self.assertEqual(version_compare('1.0a1', '1.0a1', ANY_IS_PATCH_LEFT), 1)
 
 
 if __name__ == '__main__':
