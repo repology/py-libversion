@@ -43,7 +43,7 @@ setup(
     ext_modules=[
         Extension(
             'libversion._libversion',
-            sources=['_libversion.c'],
+            sources=['src/_libversion.c'],
             **pkgconfig('libversion')
         )
     ],
