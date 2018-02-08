@@ -11,8 +11,8 @@ algorithm.
 
 See `libversion`_ repository for more details on the algorithm.
 
-Performace
-----------
+Performance
+-----------
 
 ``libversion`` is 10x to 100x faster than other version comparison
 facilities widely used in Python world.
