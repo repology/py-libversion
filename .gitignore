@@ -1,3 +1,4 @@
+__pycache__
 dist
 libversion.egg-info
 libversion/_libversion.so
