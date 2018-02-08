@@ -70,8 +70,8 @@ Requirements
 -  pkg-config
 -  `libversion`_ 2.5.0+
 
-Example
--------
+Example code
+------------
 
 .. code:: python
 
