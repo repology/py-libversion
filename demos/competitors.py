@@ -18,36 +18,64 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-from distutils.version import LooseVersion, StrictVersion
-
-from libversion import Version, version_compare
-
-from pkg_resources import parse_version
-
 __all__ = [
     'competitors',
-    'Version',
-    'version_compare',
-    'LooseVersion',
-    'StrictVersion',
-    'parse_version',
-    'versiontuple',
 ]
 
 
-def versiontuple(v):
-    """Convert version to "comparable" tuple.
-
-    Answer from stackoverflow:
-    https://stackoverflow.com/questions/11887762/compare-version-strings-in-python/11887825#11887825
-    """
-    return tuple(map(int, (v.split('.'))))
-
-
 competitors = [
-    ('Version', Version),
-    ('versiontuple', versiontuple),
-    ('StrictVersion', StrictVersion),
-    ('LooseVersion', LooseVersion),
-    ('parse_version', parse_version),
+    (
+        'libversion.version_compare', 'libversion',
+        'import libversion',
+        'libversion.version_compare({}, {})', '0',
+        2_600_000
+    ),
+    (
+        'libversion.Version', None,
+        'import libversion',
+        'libversion.Version({})', 'libversion.Version({})',
+        230_000
+    ),
+    (
+        'tuple(map(int, (v.split("."))))', 'tuple',
+        '',
+        'tuple(map(int,({}.split("."))))', 'tuple(map(int,({}.split("."))))',
+        200_000
+    ),
+    (
+        'cmp_version.cmp_version', 'cmp_version',
+        'import cmp_version',
+        'cmp_version.cmp_version({}, {})', '0',
+        200_000
+    ),
+    (
+        'cmp_version.VersionString', None,
+        'import cmp_version',
+        'cmp_version.VersionString({})', 'cmp_version.VersionString({})',
+        150_000
+    ),
+    (
+        'distutils.version.StrictVersion', 'StrictVersion',
+        'import distutils.version',
+        'distutils.version.StrictVersion({})', 'distutils.version.StrictVersion({})',
+        75_000
+    ),
+    (
+        'version.Version', 'version',
+        'import version',
+        'version.Version({})', 'version.Version({})',
+        60_000
+    ),
+    (
+        'distutils.version.LooseVersion', 'LooseVersion',
+        'import distutils.version',
+        'distutils.version.LooseVersion({})', 'distutils.version.LooseVersion({})',
+        50_000
+    ),
+    (
+        'pkg_resources.parse_version', 'parse_version',
+        'import pkg_resources',
+        'pkg_resources.parse_version({})', 'pkg_resources.parse_version({})',
+        20_000
+    ),
 ]

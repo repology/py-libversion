@@ -21,17 +21,14 @@
 
 from timeit import timeit
 
-
-def benchmark(name, stmt, setup, number=100000):
-    time = timeit(stmt=stmt, setup=setup, number=number)
-
-    print('{:>20}: {:.2f} K/sec'.format(name, number / time / 1000.0))
+from competitors import competitors
 
 
-# number of iterations is tweaked so all tests take approx the same time
-benchmark('version_compare', 'version_compare("1.2.3", "2.3.4")', 'from competitors import version_compare', 3400000)
-benchmark('Version class', 'Version("1.2.3") < Version("2.3.4")', 'from competitors import Version', 220000)
-benchmark('versiontuple', 'versiontuple("1.2.3") < versiontuple("2.3.4")', 'from competitors import versiontuple', 190000)
-benchmark('StrictVersion', 'StrictVersion("1.2.3") < StrictVersion("2.3.4")', 'from competitors import StrictVersion', 70000)
-benchmark('LooseVersion', 'LooseVersion("1.2.3") < LooseVersion("2.3.4")', 'from competitors import LooseVersion', 50000)
-benchmark('parse_version', 'parse_version("1.2.3") < parse_version("2.3.4")', 'from competitors import parse_version', 20000)
+for longname, _, setup, left, right, number in competitors:
+    time = None
+    try:
+        stmt = (left + '<' + right).format('"1.2.3"', '"2.3.4"')
+        time = timeit(stmt=stmt, setup=setup, number=number)
+        print('{:>35}: {:.2f} K/sec'.format(longname, number / time / 1000.0))
+    except ImportError as e:
+        print('{:>35}: not available: {}'.format(longname, str(e)))

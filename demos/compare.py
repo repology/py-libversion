@@ -30,18 +30,39 @@ def get_cmp_sign(a, b):
         return '<'
     elif a > b:
         return '>'
-    return '='
+    return '=='
 
 
 def evaluate_single_case(test_case, competitors):
-    left, expected, right = test_case.split(' ')
+    test_left, test_op, test_right = test_case.split(' ')
 
-    for _, wrapper in competitors:
+    test_left = '"' + test_left.replace('"', '\\"') + '"'
+    test_right = '"' + test_right.replace('"', '\\"') + '"'
+
+    for _, shortname, setup, left, right, _ in competitors:
+        if not shortname:
+            continue
+
+        exec_locals = {}
         try:
-            result = get_cmp_sign(wrapper(left), wrapper(right))
-            yield 'ok' if result == expected else 'incorrect (' + result + ')'
-        except:
-            yield 'fail'
+            exec(setup, globals(), exec_locals)
+        except ImportError as e:
+            yield 'n/a'
+            continue
+
+        result = None
+
+        try:
+            stmt = 'result = get_cmp_sign({}, {})'.format(left, right).format(test_left, test_right)
+            exec(stmt, globals(), exec_locals)
+            if exec_locals['result'] == test_op:
+                result = 'ok'
+            else:
+                result = 'incorrect (' + exec_locals['result'] + ')'
+        except Exception as e:
+            result = 'fail'
+
+        yield(result)
 
 
 def evaluate_all_cases(test_cases, competitors):
@@ -52,14 +73,14 @@ def evaluate_all_cases(test_cases, competitors):
 
 
 test_cases = [
-    '1.0 = 1.0',
-    '1.0 = 1.00',
-    '1.0 = 01.0',
-    '1.0 = 1.0.0',
-    '1.0 = 1..0',
-    '1.2_3 = 1.2-3',
-    '1.2.3 = 1.2-3',
-    '1.0alpha1 = 1.0.alpha1',
+    '1.0 == 1.0',
+    '1.0 == 1.00',
+    '1.0 == 01.0',
+    '1.0 == 1.0.0',
+    '1.0 == 1..0',
+    '1.2_3 == 1.2-3',
+    '1.2.3 == 1.2-3',
+    '1.0alpha1 == 1.0.alpha1',
     '0.9 < 1.0',
     '0.9 < 1.0alpha1',
     '1.0alpha1 < 1.0alpha2',
@@ -79,6 +100,7 @@ test_cases = [
 print(
     tabulate(
         evaluate_all_cases(test_cases, competitors),
-        headers=['Test case'] + [competitor[0] for competitor in competitors]
+        headers=['Test case'] + [competitor[1] for competitor in competitors if competitor[1]],
+        tablefmt='grid'
     )
 )
