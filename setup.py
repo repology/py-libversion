@@ -21,14 +21,6 @@ def pkgconfig(package):
     return result
 
 
-def get_long_description():
-    try:
-        import pypandoc
-        return pypandoc.convert(path.join(here, 'README.md'), 'rst').replace('\r', '')
-    except(ImportError):
-        return None
-
-
 def get_version():
     with open(path.join(here, 'libversion', '__init__.py')) as source:
         for line in source:
@@ -42,7 +34,6 @@ setup(
     name='libversion',
     version=get_version(),
     description='Python bindings for libversion',
-    long_description=get_long_description(),
     author='Dmitry Marakasov',
     author_email='amdmi3@amdmi3.ru',
     url='https://github.com/repology/py-libversion',
