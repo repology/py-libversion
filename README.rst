@@ -78,7 +78,7 @@ Python wrapper features
 Requirements
 ------------
 
--  Python 3.4+
+-  Python 3.6+
 -  pkg-config
 -  `libversion`_ 2.5.0+
 
