@@ -18,6 +18,7 @@ for more details on the algorithm.
 ## Requirements
 
 * Python 3.4+
+* pkg-config
 * [libversion](https://github.com/repology/libversion) 2.5.0+
 
 ## Example
