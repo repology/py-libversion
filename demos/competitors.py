@@ -46,8 +46,8 @@ def versiontuple(v):
 
 competitors = [
     ('Version', Version),
-    ('LooseVersion', LooseVersion),
-    ('StrictVersion', StrictVersion),
-    ('parse_version', parse_version),
     ('versiontuple', versiontuple),
+    ('StrictVersion', StrictVersion),
+    ('LooseVersion', LooseVersion),
+    ('parse_version', parse_version),
 ]
