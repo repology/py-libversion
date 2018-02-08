@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.2
+
+* Documentation typo fix, no functional change.
+
 ## 0.2.1
 
 * Documentation and demo improvements, no functional change.
