@@ -6,8 +6,8 @@ Python bindings for libversion
 Purpose
 -------
 
-Provides **fast** and **correct** generic version string comparison
-algorithm.
+Python bindings for libversion, which provides **fast**, **powerful**
+and **correct** generic version string comparison algorithm.
 
 See `libversion`_ repository for more details on the algorithm.
 
