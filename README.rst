@@ -6,17 +6,56 @@ Python bindings for libversion
 Purpose
 -------
 
-Provides a fast implementation of advanced generic version string
-comparison algorithm.
+Provides **fast** and **correct** generic version string comparison
+algorithm.
 
 See `libversion`_ repository for more details on the algorithm.
 
-Features
---------
+Performace
+----------
+
+``libversion`` is 10x to 100x faster than other version comparison
+facilities widely used in Python world.
+
++-------------------------------------+-----------+
+| Algorithm                           | comps/sec |
++=====================================+===========+
+| ``libversion.version_compare``      |  3219.02K |
+| ``libversion.Version``              |   227.56K |
+| ``tuple(map(int, (v.split('.'))))`` |   206.02K |
+| ``distutils.version.StrictVersion`` |    75.00K |
+| ``distutils.version.LooseVersion``  |    51.38K |
+| ``pkg_resources.parse_version``     |    22.26K |
++-------------------------------------+-----------+
+
+Correctness
+-----------
+
+``libversion`` handles certain complex version cases better than other
+version comparison facilities. Here are some example cases:
+
++-----------------+------------+--------------+---------------+--------------+---------------+
+| Test case       | libversion | tuple        | StrictVersion | LooseVersion | parse_version |
++=================+============+==============+===============+==============+===============+
+| 1.0 = 1.0.0     | ok         | incorrect    | ok            | incorrect    | ok            |
++-----------------+------------+--------------+---------------+--------------+---------------+
+| 1.2_3 = 1.2-3   | ok         | fail         | fail          | incorrect    | incorrect     |
++-----------------+------------+--------------+---------------+--------------+---------------+
+| 1.2.3 = 1.2-3   | ok         | fail         | fail          | fail         | incorrect     |
++-----------------+------------+--------------+---------------+--------------+---------------+
+| 1.0rc1 < 1.0    | ok         | fail         | fail          | incorrect    | ok            |
++-----------------+------------+--------------+---------------+--------------+---------------+
+| 1.0 < 1.0patch1 | ok         | fail         | fail          | ok           | incorrect     |
++-----------------+------------+--------------+---------------+--------------+---------------+
+| 1.0.2a < 1.0.2g | ok         | fail         | fail          | ok           | incorrect     |
++-----------------+------------+--------------+---------------+--------------+---------------+
+
+Python wrapper features
+-----------------------
 
 -  Provides API similar to C library, ``version_compare(a, b)`` function
--  Provides more pythonic ``Version`` class with overloaded comparison
-   operators
+-  Provides more pythonic (but slower) ``Version`` class with overloaded
+   comparison operators
 
 Requirements
 ------------
