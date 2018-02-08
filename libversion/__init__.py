@@ -38,6 +38,8 @@ __all__ = [
 
 
 class Version:
+    __slots__ = ['value', 'flags']
+
     P_IS_PATCH = 0x1
     ANY_IS_PATCH = 0x2
 
