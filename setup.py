@@ -23,7 +23,7 @@ setup(
     description='Python bindings for libversion',
     author='Dmitry Marakasov',
     author_email='amdmi3@amdmi3.ru',
-    url='https://github.com/repology/pylibversion',
+    url='https://github.com/repology/py-libversion',
     license='MIT',
     classifiers=[
         'Development Status :: 4 - Beta',
