@@ -33,27 +33,20 @@ def get_cmp_sign(a, b):
     return '='
 
 
-def format_test_outcome(value):
-    if value is None:
-        return 'fail'
-    elif value:
-        return '+'
-    return '-'
-
-
 def evaluate_single_case(test_case, competitors):
-    left, expected_result, right = test_case.split(' ')
+    left, expected, right = test_case.split(' ')
 
     for _, wrapper in competitors:
         try:
-            yield get_cmp_sign(wrapper(left), wrapper(right)) == expected_result
+            result = get_cmp_sign(wrapper(left), wrapper(right))
+            yield 'ok' if result == expected else 'incorrect (' + result + ')'
         except:
-            yield(None)
+            yield 'fail'
 
 
 def evaluate_all_cases(test_cases, competitors):
     return [
-        [test_case] + list(map(format_test_outcome, evaluate_single_case(test_case, competitors)))
+        [test_case] + list(evaluate_single_case(test_case, competitors))
         for test_case in test_cases
     ]
 
