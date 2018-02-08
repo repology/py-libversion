@@ -25,7 +25,7 @@ from timeit import timeit
 def benchmark(name, stmt, setup, number=100000):
     time = timeit(stmt=stmt, setup=setup, number=number)
 
-    print('{:>20}: {:.2f} M/sec'.format(name, number / time / 1000000.0))
+    print('{:>20}: {:.2f} K/sec'.format(name, number / time / 1000.0))
 
 
 # number of iterations is tweaked so all tests take approx the same time
