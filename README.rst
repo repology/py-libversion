@@ -64,7 +64,11 @@ fail:
 | 1.0.2a < 1.0.2g         | ok         | fail          | fail          | ok            | incorrect (>) | ok            |
 +-------------------------+------------+---------------+---------------+---------------+---------------+---------------+
 
-Note: ``version`` module was not able to complete any tests as it's
+Note 1: ``fail`` means that attempt to compare versions has thrown
+an exception, usually bacause a library cannot parse specific version
+string.
+
+Note 2: ``version`` module was not able to complete any tests as it's
 a strict semantic version implementation which require 3 version
 components. Also, it does not support Python 3 without modification.
 
