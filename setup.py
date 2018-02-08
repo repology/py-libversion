@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
 
 import subprocess
+from os import path
 
 from setuptools import Extension, setup
+
+
+here = path.abspath(path.dirname(__file__))
 
 
 def pkgconfig(package):
@@ -17,10 +21,28 @@ def pkgconfig(package):
     return result
 
 
+def get_long_description():
+    try:
+        import pypandoc
+        return pypandoc.convert(path.join(here, 'README.md'), 'rst').replace('\r', '')
+    except(ImportError):
+        return None
+
+
+def get_version():
+    with open(path.join(here, 'libversion', '__init__.py')) as source:
+        for line in source:
+            if line.startswith('__version__'):
+                return line.strip().split(' = ')[-1].strip('\'')
+
+    raise RuntimeError('Cannot determine package version from package source')
+
+
 setup(
     name='libversion',
-    version='0.1.0',
+    version=get_version(),
     description='Python bindings for libversion',
+    long_description=get_long_description(),
     author='Dmitry Marakasov',
     author_email='amdmi3@amdmi3.ru',
     url='https://github.com/repology/py-libversion',
