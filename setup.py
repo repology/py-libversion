@@ -30,10 +30,18 @@ def get_version():
     raise RuntimeError('Cannot determine package version from package source')
 
 
+def get_long_description():
+    try:
+        return open(path.join(here, 'README.rst')).read()
+    except:
+        return None
+
+
 setup(
     name='libversion',
     version=get_version(),
     description='Python bindings for libversion',
+    long_description=get_long_description(),
     author='Dmitry Marakasov',
     author_email='amdmi3@amdmi3.ru',
     url='https://github.com/repology/py-libversion',
