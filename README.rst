@@ -45,7 +45,7 @@ Example
 License
 -------
 
-MIT license, copyright (c) 2018 Dmitry Marakasov amdmi3@amdmi3.ru.
+MIT license, copyright (c) 2017-2018 Dmitry Marakasov amdmi3@amdmi3.ru.
 
 .. _libversion: https://github.com/repology/libversion
 
