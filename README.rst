@@ -69,9 +69,15 @@ Example
 
 .. code:: python
 
-    from libversion import Version
+    from libversion import Version, version_compare
 
-    assert(Version("1.0") == Version("001.0.0"))
+    assert(version_compare("0.9", "1.1") < 0)
+    assert(version_compare("1.0", "1.0.0") == 0)
+    assert(version_compare("1.1", "0.9") > 0)
+
+    assert(Version("0.9") < Version("1.1"))
+    assert(Version("1.0") ==  Version("1.0.0"))
+    assert(Version("1.1") > Version("0.9"))
 
     assert(Version("0.999") < Version("1.0alpha1"))
     assert(Version("1.0alpha1") < Version("1.0alpha2"))
