@@ -11,7 +11,7 @@ before_script:
   - pip install tabulate
   - pip install cmp_version
   - pip install version || true  # for the case it learns python3
-  - wget -qO- https://github.com/repology/libversion/archive/master.tar.gz | tar -xzf- && ( cd libversion-master && cmake . && make && sudo make install )
+  - wget -qO- https://github.com/repology/libversion/archive/master.tar.gz | tar -xzf- && ( cd libversion-master && cmake . && make && sudo make install && sudo ldconfig )
 script:
   - flake8
   - python setup.py test
