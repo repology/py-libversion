@@ -18,20 +18,16 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-from libversion._libversion import ANY_IS_PATCH, ANY_IS_PATCH_LEFT, ANY_IS_PATCH_RIGHT, P_IS_PATCH, P_IS_PATCH_LEFT, P_IS_PATCH_RIGHT, version_compare
+from libversion._libversion import ANY_IS_PATCH, P_IS_PATCH, version_compare
 
 
-__version__ = '0.2.2'
+__version__ = '1.0.0'
 
 __all__ = [
     'version_compare',
 
     'ANY_IS_PATCH',
-    'ANY_IS_PATCH_LEFT',
-    'ANY_IS_PATCH_RIGHT',
     'P_IS_PATCH',
-    'P_IS_PATCH_LEFT',
-    'P_IS_PATCH_RIGHT',
 
     'Version'
 ]
@@ -40,65 +36,42 @@ __all__ = [
 class Version:
     __slots__ = ['value', 'flags']
 
-    P_IS_PATCH = 0x1
-    ANY_IS_PATCH = 0x2
+    P_IS_PATCH = P_IS_PATCH
+    ANY_IS_PATCH = ANY_IS_PATCH
 
     def __init__(self, value, flags=0):
         self.value = value
         self.flags = flags
-
-    def _leftflags(self):
-        flags = 0
-        if self.flags & Version.P_IS_PATCH:
-            flags |= P_IS_PATCH_LEFT
-        if self.flags & Version.ANY_IS_PATCH:
-            flags |= ANY_IS_PATCH_LEFT
-        return flags
-
-    def _rightflags(self):
-        flags = 0
-        if self.flags & Version.P_IS_PATCH:
-            flags |= P_IS_PATCH_RIGHT
-        if self.flags & Version.ANY_IS_PATCH:
-            flags |= ANY_IS_PATCH_RIGHT
-        return flags
-
-    def _compare(self, other):
-        return version_compare(
-            self.value,
-            other.value,
-            self._leftflags() | other._rightflags()
-        )
 
     def __str__(self):
         return self.value
 
     def __eq__(self, other):
         if isinstance(other, Version):
-            return self._compare(other) == 0
+            return version_compare(self.value, other.value, self.flags, other.flags) == 0
         return NotImplemented
 
     def __ne__(self, other):
         if isinstance(other, Version):
-            return self._compare(other) != 0
+            return version_compare(self.value, other.value, self.flags, other.flags) != 0
         return NotImplemented
 
     def __lt__(self, other):
         if isinstance(other, Version):
-            return self._compare(other) < 0
+            return version_compare(self.value, other.value, self.flags, other.flags) < 0
         return NotImplemented
 
     def __le__(self, other):
         if isinstance(other, Version):
-            return self._compare(other) <= 0
+            return version_compare(self.value, other.value, self.flags, other.flags) <= 0
         return NotImplemented
 
     def __gt__(self, other):
         if isinstance(other, Version):
-            return self._compare(other) > 0
+            return version_compare(self.value, other.value, self.flags, other.flags) > 0
         return NotImplemented
 
     def __ge__(self, other):
         if isinstance(other, Version):
-            return self._compare(other) >= 0
+            return version_compare(self.value, other.value, self.flags, other.flags) >= 0
         return NotImplemented

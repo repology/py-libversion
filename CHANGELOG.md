@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.0
+
+* Chase libversion 2.6.0 new API, `Version` class performance
+  improvement
+
 ## 0.2.2
 
 * Documentation typo fix, no functional change.
