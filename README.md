@@ -5,21 +5,21 @@
 
 ## Purpose
 
-Python bindings for libversion, which provides *fast*, *powerful*
-and *correct* generic version string comparison algorithm.
+Python bindings for libversion, which provides **fast**, **powerful**
+and **correct** generic version string comparison algorithm.
 
 See [libversion](https://github.com/repology/libversion) repository for
 more details on the algorithm.
 
 ## Performance
 
-*libversion* is 10x to 100x faster than other version comparison
+**libversion** is 10x to 100x faster than other version comparison
 facilities widely used in Python world.
 
 | Facility                            | comps/sec |
 |-------------------------------------|----------:|
-| *libversion.version_compare*        |  3219.02K |
-| *libversion.Version*                |   374.08K |
+| **libversion.version_compare**      |  3219.02K |
+| **libversion.Version**              |   374.08K |
 | tuple(map(int, (v.split('.'))))     |   206.02K |
 | cmp_version.cmp_version             |   189.15K |
 | cmp_version.VersionString           |   156.42K |
@@ -30,7 +30,7 @@ facilities widely used in Python world.
 
 ## Correctness
 
-*libversion* handles certain complex version cases better than other
+**libversion** handles certain complex version cases better than other
 version comparison facilities. Here are some example cases where others
 fail:
 
@@ -44,11 +44,11 @@ fail:
 | 1.0 < 1.0patch1         | ok         | fail          | fail          | ok            | incorrect (>) | ok            |
 | 1.0.2a < 1.0.2g         | ok         | fail          | fail          | ok            | incorrect (>) | ok            |
 
-Note 1: *fail* means that attempt to compare versions has thrown
+Note 1: **fail** means that attempt to compare versions has thrown
 an exception, usually bacause a library cannot parse specific version
 string.
 
-Note 2: *version* module was not able to complete any tests as it's
+Note 2: **version** module was not able to complete any tests as it's
 a strict semantic version implementation which require 3 version
 components. Also, it does not support Python 3 without modification.
 
