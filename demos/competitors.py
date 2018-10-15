@@ -31,9 +31,27 @@ competitors = [
         2_600_000
     ),
     (
-        'libversion.version_compare', 'libversion',
+        'libversion.version_compare3', 'libversion',
+        'import libversion',
+        'libversion.version_compare3({}, {}, 0)', '0',
+        2_600_000
+    ),
+    (
+        'libversion.version_compare4', 'libversion',
+        'import libversion',
+        'libversion.version_compare4({}, {}, 0, 0)', '0',
+        2_600_000
+    ),
+    (
+        'libversion.version_compare(2 args)', 'libversion',
         'import libversion',
         'libversion.version_compare({}, {})', '0',
+        2_600_000
+    ),
+    (
+        'libversion.version_compare(4 args)', 'libversion',
+        'import libversion',
+        'libversion.version_compare({}, {}, 0, 0)', '0',
         2_600_000
     ),
     (
@@ -41,6 +59,12 @@ competitors = [
         'import libversion',
         'libversion.Version({})', 'libversion.Version({})',
         230_000
+    ),
+    (
+        '[int(c) for c in v.split(".")]', 'tuple',
+        '',
+        '[int(c) for c in {}.split(".")]', '[int(c) for c in {}.split(".")]',
+        200_000
     ),
     (
         'tuple(map(int, (v.split("."))))', 'tuple',
