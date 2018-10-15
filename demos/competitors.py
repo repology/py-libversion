@@ -25,6 +25,12 @@ __all__ = [
 
 competitors = [
     (
+        'libversion.version_compare2', 'libversion',
+        'import libversion',
+        'libversion.version_compare2({}, {})', '0',
+        2_600_000
+    ),
+    (
         'libversion.version_compare', 'libversion',
         'import libversion',
         'libversion.version_compare({}, {})', '0',

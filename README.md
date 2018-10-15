@@ -18,6 +18,7 @@ facilities widely used in Python world.
 
 | Facility                            | comps/sec |
 |-------------------------------------|----------:|
+| **libversion.version_compare2**     |  3492.81K |
 | **libversion.version_compare**      |  3219.02K |
 | **libversion.Version**              |   374.08K |
 | tuple(map(int, (v.split('.'))))     |   206.02K |
