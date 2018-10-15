@@ -21,7 +21,7 @@
 from libversion._libversion import ANY_IS_PATCH, P_IS_PATCH, version_compare2, version_compare3, version_compare4, version_compare
 
 
-__version__ = '1.0.0'
+__version__ = '1.1.0'
 
 __all__ = [
     'version_compare2',

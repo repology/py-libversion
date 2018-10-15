@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.0
+
+* Chase libversion 2.7.0 new API
+
 ## 1.0.0
 
 * Chase libversion 2.6.0 new API, `Version` class performance
