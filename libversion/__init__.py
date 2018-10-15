@@ -18,7 +18,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-from libversion._libversion import ANY_IS_PATCH, P_IS_PATCH, version_compare2, version_compare3, version_compare4, version_compare
+from libversion._libversion import ANY_IS_PATCH, P_IS_PATCH, version_compare, version_compare2, version_compare3, version_compare4
 
 
 __version__ = '1.1.0'
