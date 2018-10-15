@@ -23,7 +23,46 @@
 #include <Python.h>
 #include <libversion/version.h>
 
-static PyObject* version_compare(PyObject *self, PyObject *args) {
+static PyObject* py_version_compare2(PyObject *self, PyObject *args) {
+	(void)self; // (unused)
+
+	const char *v1;
+	const char *v2;
+
+	if (!PyArg_ParseTuple(args, "ss", &v1, &v2))
+		return NULL;
+
+	return PyLong_FromLong(version_compare2(v1, v2));
+}
+
+static PyObject* py_version_compare3(PyObject *self, PyObject *args) {
+	(void)self; // (unused)
+
+	const char *v1;
+	const char *v2;
+	int flags;
+
+	if (!PyArg_ParseTuple(args, "ssi", &v1, &v2, &flags))
+		return NULL;
+
+	return PyLong_FromLong(version_compare3(v1, v2, flags));
+}
+
+static PyObject* py_version_compare4(PyObject *self, PyObject *args) {
+	(void)self; // (unused)
+
+	const char *v1;
+	const char *v2;
+	int flags1;
+	int flags2;
+
+	if (!PyArg_ParseTuple(args, "ssii", &v1, &v2, &flags1, &flags2))
+		return NULL;
+
+	return PyLong_FromLong(version_compare4(v1, v2, flags1, flags2));
+}
+
+static PyObject* py_version_compare(PyObject *self, PyObject *args) {
 	(void)self; // (unused)
 
 	const char *v1;
@@ -34,11 +73,14 @@ static PyObject* version_compare(PyObject *self, PyObject *args) {
 	if (!PyArg_ParseTuple(args, "ss|ii", &v1, &v2, &flags1, &flags2))
 		return NULL;
 
-	return PyLong_FromLong(version_compare_flags2(v1, v2, flags1, flags2));
+	return PyLong_FromLong(version_compare4(v1, v2, flags1, flags2));
 }
 
 static PyMethodDef module_methods[] = {
-	{"version_compare", (PyCFunction)version_compare, METH_VARARGS, ""},
+	{"version_compare2", (PyCFunction)py_version_compare2, METH_VARARGS, ""},
+	{"version_compare3", (PyCFunction)py_version_compare3, METH_VARARGS, ""},
+	{"version_compare4", (PyCFunction)py_version_compare4, METH_VARARGS, ""},
+	{"version_compare", (PyCFunction)py_version_compare, METH_VARARGS, ""},
 	{NULL, NULL, 0, NULL}
 };
 
