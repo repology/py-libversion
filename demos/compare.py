@@ -101,6 +101,6 @@ print(
     tabulate(
         evaluate_all_cases(test_cases, competitors),
         headers=['Test case'] + [competitor[1] for competitor in competitors if competitor[1]],
-        tablefmt='grid'
+        tablefmt='pipe'
     )
 )
