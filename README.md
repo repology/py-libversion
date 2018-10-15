@@ -67,24 +67,23 @@ components. Also, it does not support Python 3 without modification.
 ## Example code
 
 ```python
+from libversion import Version, version_compare
 
-    from libversion import Version, version_compare
+assert(version_compare("0.9", "1.1") < 0)
+assert(version_compare("1.0", "1.0.0") == 0)
+assert(version_compare("1.1", "0.9") > 0)
 
-    assert(version_compare("0.9", "1.1") < 0)
-    assert(version_compare("1.0", "1.0.0") == 0)
-    assert(version_compare("1.1", "0.9") > 0)
+assert(Version("0.9") < Version("1.1"))
+assert(Version("1.0") ==  Version("1.0.0"))
+assert(Version("1.1") > Version("0.9"))
 
-    assert(Version("0.9") < Version("1.1"))
-    assert(Version("1.0") ==  Version("1.0.0"))
-    assert(Version("1.1") > Version("0.9"))
-
-    assert(Version("0.999") < Version("1.0alpha1"))
-    assert(Version("1.0alpha1") < Version("1.0alpha2"))
-    assert(Version("1.0alpha2") < Version("1.0beta1"))
-    assert(Version("1.0beta1") < Version("1.0pre1"))
-    assert(Version("1.0pre1") < Version("1.0rc1"))
-    assert(Version("1.0rc1") < Version("1.0"))
-    assert(Version("1.0") < Version("1.0patch1"))
+assert(Version("0.999") < Version("1.0alpha1"))
+assert(Version("1.0alpha1") < Version("1.0alpha2"))
+assert(Version("1.0alpha2") < Version("1.0beta1"))
+assert(Version("1.0beta1") < Version("1.0pre1"))
+assert(Version("1.0pre1") < Version("1.0rc1"))
+assert(Version("1.0rc1") < Version("1.0"))
+assert(Version("1.0") < Version("1.0patch1"))
 ```
 
 ## License
