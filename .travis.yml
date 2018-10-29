@@ -2,6 +2,11 @@ language: python
 sudo: true
 python:
   - 3.6
+#  - 3.7 # not supported yet
+env:
+  - LIBVERSION=master
+  - LIBVERSION=2.6.0
+  - LIBVERSION=2.7.0
 before_script:
   - pip install flake8
   - pip install flake8-builtins
@@ -11,7 +16,7 @@ before_script:
   - pip install tabulate
   - pip install cmp_version
   - pip install version || true  # for the case it learns python3
-  - wget -qO- https://github.com/repology/libversion/archive/master.tar.gz | tar -xzf- && ( cd libversion-master && cmake . && make && sudo make install && sudo ldconfig )
+  - wget -qO- https://github.com/repology/libversion/archive/$LIBVERSION.tar.gz | tar -xzf- && ( cd libversion-$LIBVERSION && cmake . && make && sudo make install && sudo ldconfig )
 script:
   - flake8
   - python setup.py test
