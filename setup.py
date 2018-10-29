@@ -32,7 +32,7 @@ def get_version():
 
 def get_long_description():
     try:
-        return open(path.join(here, 'README.rst')).read()
+        return open(path.join(here, 'README.md')).read()
     except:
         return None
 
