@@ -48,7 +48,7 @@ setup(
     url='https://github.com/repology/py-libversion',
     license='MIT',
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: C',
         'Programming Language :: Python :: 3 :: Only',
