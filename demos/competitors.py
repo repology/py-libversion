@@ -31,12 +31,6 @@ competitors = [
         2_600_000
     ),
     (
-        'libversion.version_compare3', None,
-        'import libversion',
-        'libversion.version_compare3({}, {}, 0)', '0',
-        2_600_000
-    ),
-    (
         'libversion.version_compare4', None,
         'import libversion',
         'libversion.version_compare4({}, {}, 0, 0)', '0',
