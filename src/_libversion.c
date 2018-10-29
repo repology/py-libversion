@@ -33,8 +33,12 @@ static PyObject* py_version_compare2(PyObject *self, PyObject *args) {
 		return NULL;
 
 	return PyLong_FromLong(
-#if defined(LIBVERSION_VERSION_ATLEAST) && LIBVERSION_VERSION_ATLEAST(2, 7, 0)
+#if defined(LIBVERSION_VERSION_ATLEAST)
+# if LIBVERSION_VERSION_ATLEAST(2, 7, 0)
 		version_compare2(v1, v2)
+# else
+		version_compare_simple(v1, v2)
+# endif
 #else
 		version_compare_simple(v1, v2)
 #endif
@@ -53,8 +57,12 @@ static PyObject* py_version_compare4(PyObject *self, PyObject *args) {
 		return NULL;
 
 	return PyLong_FromLong(
-#if defined(LIBVERSION_VERSION_ATLEAST) && LIBVERSION_VERSION_ATLEAST(2, 7, 0)
+#if defined(LIBVERSION_VERSION_ATLEAST)
+# if LIBVERSION_VERSION_ATLEAST(2, 7, 0)
 		version_compare4(v1, v2, flags1, flags2)
+# else
+		version_compare_flags2(v1, v2, flags1, flags2)
+# endif
 #else
 		version_compare_flags2(v1, v2, flags1, flags2)
 #endif
@@ -73,8 +81,12 @@ static PyObject* py_version_compare(PyObject *self, PyObject *args) {
 		return NULL;
 
 	return PyLong_FromLong(
-#if defined(LIBVERSION_VERSION_ATLEAST) && LIBVERSION_VERSION_ATLEAST(2, 7, 0)
+#if defined(LIBVERSION_VERSION_ATLEAST)
+# if LIBVERSION_VERSION_ATLEAST(2, 7, 0)
 		version_compare4(v1, v2, flags1, flags2)
+# else
+		version_compare_flags2(v1, v2, flags1, flags2)
+# endif
 #else
 		version_compare_flags2(v1, v2, flags1, flags2)
 #endif
