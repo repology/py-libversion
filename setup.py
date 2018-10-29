@@ -42,6 +42,7 @@ setup(
     version=get_version(),
     description='Python bindings for libversion',
     long_description=get_long_description(),
+    long_description_content_type='text/markdown',
     author='Dmitry Marakasov',
     author_email='amdmi3@amdmi3.ru',
     url='https://github.com/repology/py-libversion',
