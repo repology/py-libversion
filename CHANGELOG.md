@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.1
+
+* Fix handling of long description in `setup.py`
+
 ## 1.1.0
 
 * Chase libversion 2.7.0 new API
