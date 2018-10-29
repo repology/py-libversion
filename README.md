@@ -1,5 +1,9 @@
 # Python bindings for libversion
 
+<a href="https://repology.org/metapackage/python:libversion/versions">
+	<img src="https://repology.org/badge/vertical-allrepos/python:libversion.svg" alt="py-libversion packaging status" align="right">
+</a>
+
 [![Build Status](https://travis-ci.org/repology/py-libversion.svg?branch=master)](https://travis-ci.org/repology/py-libversion)
 [![PyPI](https://img.shields.io/pypi/v/libversion.svg)](https://pypi.python.org/pypi/libversion)
 
