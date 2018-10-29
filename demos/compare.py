@@ -46,7 +46,7 @@ def evaluate_single_case(test_case, competitors):
         exec_locals = {}
         try:
             exec(setup, globals(), exec_locals)
-        except ImportError as e:
+        except ImportError:
             yield 'n/a'
             continue
 
@@ -59,7 +59,7 @@ def evaluate_single_case(test_case, competitors):
                 result = 'ok'
             else:
                 result = 'incorrect (' + exec_locals['result'] + ')'
-        except Exception as e:
+        except Exception:
             result = 'fail'
 
         yield(result)
