@@ -5,7 +5,7 @@
 </a>
 
 [![Build Status](https://travis-ci.org/repology/py-libversion.svg?branch=master)](https://travis-ci.org/repology/py-libversion)
-[![PyPI](https://img.shields.io/pypi/v/libversion.svg)](https://pypi.python.org/pypi/libversion)
+[![PyPI](https://img.shields.io/pypi/v/libversion.svg)](https://pypi.org/project/libversion/)
 
 ## Purpose
 
