@@ -5,7 +5,9 @@
 </a>
 
 [![Build Status](https://travis-ci.org/repology/py-libversion.svg?branch=master)](https://travis-ci.org/repology/py-libversion)
-[![PyPI](https://img.shields.io/pypi/v/libversion.svg)](https://pypi.org/project/libversion/)
+[![PyPI downloads](https://img.shields.io/pypi/dm/libversion.svg)](https://pypi.org/project/libversion/)
+[![PyPI version](https://img.shields.io/pypi/v/libversion.svg)](https://pypi.org/project/libversion/)
+[![PyPI pythons](https://img.shields.io/pypi/pyversions/libversion.svg)](https://pypi.org/project/libversion/)
 
 ## Purpose
 
