@@ -1,8 +1,9 @@
 language: python
-sudo: true
+dist: xenial
+sudo: required
 python:
   - 3.6
-#  - 3.7 # not supported yet
+  - 3.7
 env:
   - LIBVERSION=master
   - LIBVERSION=2.7.0
