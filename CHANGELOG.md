@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.3
+
+* Add type information
+
 ## 1.1.2
 
 * Fix handling of long description in `setup.py`
