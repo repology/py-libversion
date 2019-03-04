@@ -60,6 +60,7 @@ setup(
         'Topic :: System :: Software Distribution',
     ],
     packages=['libversion'],
+    package_data={'libversion': ['py.typed', '_libversion.pyi']},
     ext_modules=[
         Extension(
             'libversion._libversion',
