@@ -18,6 +18,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
+from typing import Any, Union
 from libversion._libversion import ANY_IS_PATCH, P_IS_PATCH, version_compare, version_compare2, version_compare4
 
 
@@ -41,39 +42,39 @@ class Version:
     P_IS_PATCH = P_IS_PATCH
     ANY_IS_PATCH = ANY_IS_PATCH
 
-    def __init__(self, value, flags=0):
+    def __init__(self, value: str, flags: int = 0) -> None:
         self.value = value
         self.flags = flags
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.value
 
-    def __eq__(self, other):
+    def __eq__(self, other: Any) -> Union[bool, NotImplemented]:
         if isinstance(other, Version):
             return version_compare(self.value, other.value, self.flags, other.flags) == 0
         return NotImplemented
 
-    def __ne__(self, other):
+    def __ne__(self, other: Any) -> Union[bool, NotImplemented]:
         if isinstance(other, Version):
             return version_compare(self.value, other.value, self.flags, other.flags) != 0
         return NotImplemented
 
-    def __lt__(self, other):
+    def __lt__(self, other: Any) -> Union[bool, NotImplemented]:
         if isinstance(other, Version):
             return version_compare(self.value, other.value, self.flags, other.flags) < 0
         return NotImplemented
 
-    def __le__(self, other):
+    def __le__(self, other: Any) -> Union[bool, NotImplemented]:
         if isinstance(other, Version):
             return version_compare(self.value, other.value, self.flags, other.flags) <= 0
         return NotImplemented
 
-    def __gt__(self, other):
+    def __gt__(self, other: Any) -> Union[bool, NotImplemented]:
         if isinstance(other, Version):
             return version_compare(self.value, other.value, self.flags, other.flags) > 0
         return NotImplemented
 
-    def __ge__(self, other):
+    def __ge__(self, other: Any) -> Union[bool, NotImplemented]:
         if isinstance(other, Version):
             return version_compare(self.value, other.value, self.flags, other.flags) >= 0
         return NotImplemented

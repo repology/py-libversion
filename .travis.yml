@@ -17,11 +17,13 @@ before_script:
   - pip install tabulate
   - pip install cmp_version
   - pip install version || true  # for the case it learns python3
+  - pip install mypy
   - wget -qO- https://github.com/repology/libversion/archive/$LIBVERSION.tar.gz | tar -xzf- && ( cd libversion-$LIBVERSION && cmake . && make && sudo make install && sudo ldconfig )
 script:
   - flake8
   - python setup.py test
   - python setup.py install
+  - mypy --strict tests/*.py
   - cd demos
   - ${PYTHON} ./compare.py
   - ${PYTHON} ./benchmark.py

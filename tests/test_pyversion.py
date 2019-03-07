@@ -24,24 +24,24 @@ from libversion import Version
 
 
 class TestLibVersion(unittest.TestCase):
-    def test_pyversion_compare_eq(self):
+    def test_pyversion_compare_eq(self) -> None:
         self.assertTrue(Version('') == Version(''))
         self.assertTrue(Version('1') == Version('1'))
         self.assertTrue(Version('001.001') == Version('1.1'))
 
-    def test_pyversion_compare_ne(self):
+    def test_pyversion_compare_ne(self) -> None:
         self.assertTrue(Version('1.1') != Version('1.2'))
         self.assertTrue(Version('1.10') != Version('1.01'))
 
-    def test_pyversion_compare_lg(self):
+    def test_pyversion_compare_lg(self) -> None:
         self.assertTrue(Version('1.0') < Version('1.0a'))
         self.assertTrue(Version('1.0010') > Version('1.01'))
 
-    def test_pyversion_compare_flag_p_is_patch(self):
+    def test_pyversion_compare_flag_p_is_patch(self) -> None:
         self.assertTrue(Version('1.0p1') < Version('1.0p1', Version.P_IS_PATCH))
         self.assertTrue(Version('1.0p1', Version.P_IS_PATCH) > Version('1.0p1'))
 
-    def test_pyversion_compare_flag_any_is_patch(self):
+    def test_pyversion_compare_flag_any_is_patch(self) -> None:
         self.assertTrue(Version('1.0a1') < Version('1.0a1', Version.ANY_IS_PATCH))
         self.assertTrue(Version('1.0a1', Version.ANY_IS_PATCH) > Version('1.0a1'))
 
