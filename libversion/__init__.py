@@ -50,32 +50,32 @@ class Version:
     def __str__(self) -> str:
         return self.value
 
-    def __eq__(self, other: Any) -> Union[bool, NotImplemented]:
+    def __eq__(self, other: Any) -> Union[bool, 'NotImplemented']:
         if isinstance(other, Version):
             return version_compare(self.value, other.value, self.flags, other.flags) == 0
         return NotImplemented
 
-    def __ne__(self, other: Any) -> Union[bool, NotImplemented]:
+    def __ne__(self, other: Any) -> Union[bool, 'NotImplemented']:
         if isinstance(other, Version):
             return version_compare(self.value, other.value, self.flags, other.flags) != 0
         return NotImplemented
 
-    def __lt__(self, other: Any) -> Union[bool, NotImplemented]:
+    def __lt__(self, other: Any) -> Union[bool, 'NotImplemented']:
         if isinstance(other, Version):
             return version_compare(self.value, other.value, self.flags, other.flags) < 0
         return NotImplemented
 
-    def __le__(self, other: Any) -> Union[bool, NotImplemented]:
+    def __le__(self, other: Any) -> Union[bool, 'NotImplemented']:
         if isinstance(other, Version):
             return version_compare(self.value, other.value, self.flags, other.flags) <= 0
         return NotImplemented
 
-    def __gt__(self, other: Any) -> Union[bool, NotImplemented]:
+    def __gt__(self, other: Any) -> Union[bool, 'NotImplemented']:
         if isinstance(other, Version):
             return version_compare(self.value, other.value, self.flags, other.flags) > 0
         return NotImplemented
 
-    def __ge__(self, other: Any) -> Union[bool, NotImplemented]:
+    def __ge__(self, other: Any) -> Union[bool, 'NotImplemented']:
         if isinstance(other, Version):
             return version_compare(self.value, other.value, self.flags, other.flags) >= 0
         return NotImplemented
