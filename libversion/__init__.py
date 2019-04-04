@@ -19,6 +19,7 @@
 # THE SOFTWARE.
 
 from typing import Any, Union
+
 from libversion._libversion import ANY_IS_PATCH, P_IS_PATCH, version_compare, version_compare2, version_compare4
 
 
