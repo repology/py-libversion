@@ -55,6 +55,7 @@ setup(
         'Programming Language :: Python :: 3 :: Only',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
         'Topic :: Software Development :: Version Control',
         'Topic :: System :: Archiving :: Packaging',
         'Topic :: System :: Software Distribution',
