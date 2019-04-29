@@ -8,6 +8,7 @@
 [![PyPI downloads](https://img.shields.io/pypi/dm/libversion.svg)](https://pypi.org/project/libversion/)
 [![PyPI version](https://img.shields.io/pypi/v/libversion.svg)](https://pypi.org/project/libversion/)
 [![PyPI pythons](https://img.shields.io/pypi/pyversions/libversion.svg)](https://pypi.org/project/libversion/)
+[![Github commits (since latest release)](https://img.shields.io/github/commits-since/repology/py-libversion/latest.svg)](https://github.com/repology/py-libversion)
 
 ## Purpose
 
