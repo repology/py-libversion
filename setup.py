@@ -25,7 +25,7 @@ def get_version():
     with open(path.join(here, 'libversion', '__init__.py')) as source:
         for line in source:
             if line.startswith('__version__'):
-                return line.strip().split(' = ')[-1].strip('\'')
+                return line.strip().split(' = ')[-1].strip("'")
 
     raise RuntimeError('Cannot determine package version from package source')
 
