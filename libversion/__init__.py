@@ -1,4 +1,4 @@
-# Copyright (c) 2018 Dmitry Marakasov <amdmi3@amdmi3.ru>
+# Copyright (c) 2019 Dmitry Marakasov <amdmi3@amdmi3.ru>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +20,11 @@
 
 from typing import Any, Union
 
-from libversion._libversion import ANY_IS_PATCH, P_IS_PATCH, version_compare, version_compare2, version_compare4
+from libversion._libversion import ANY_IS_PATCH as ANY_IS_PATCH
+from libversion._libversion import P_IS_PATCH as P_IS_PATCH
+from libversion._libversion import version_compare as version_compare
+from libversion._libversion import version_compare2 as version_compare2
+from libversion._libversion import version_compare4 as version_compare4
 
 
 __version__ = '1.1.3'
