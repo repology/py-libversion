@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.4
+
+* Type correctness fixes
+
 ## 1.1.3
 
 * Add type information
