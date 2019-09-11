@@ -22,6 +22,8 @@ from typing import Any, Union
 
 from libversion._libversion import ANY_IS_PATCH as ANY_IS_PATCH
 from libversion._libversion import P_IS_PATCH as P_IS_PATCH
+from libversion._libversion import LOWER_BOUND as LOWER_BOUND
+from libversion._libversion import UPPER_BOUND as UPPER_BOUND
 from libversion._libversion import version_compare as version_compare
 from libversion._libversion import version_compare2 as version_compare2
 from libversion._libversion import version_compare4 as version_compare4
@@ -36,6 +38,8 @@ __all__ = [
 
     'ANY_IS_PATCH',
     'P_IS_PATCH',
+    'LOWER_BOUND',
+    'UPPER_BOUND',
 
     'Version'
 ]
@@ -46,6 +50,8 @@ class Version:
 
     P_IS_PATCH = P_IS_PATCH
     ANY_IS_PATCH = ANY_IS_PATCH
+    LOWER_BOUND = LOWER_BOUND
+    UPPER_BOUND = UPPER_BOUND
 
     def __init__(self, value: str, flags: int = 0) -> None:
         self.value = value

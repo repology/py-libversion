@@ -24,7 +24,7 @@ matrix:
     - python: 3.6
       env: CC=gcc LIBVERSION=2.8.2
     - python: 3.6
-      env: CC=gcc LIBVERSION=2.9.0
+      env: CC=gcc LIBVERSION=2.9.1
 before_script:
   - pip install flake8
   - pip install flake8-builtins

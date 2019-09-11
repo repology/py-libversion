@@ -1,5 +1,7 @@
 ANY_IS_PATCH: int
 P_IS_PATCH: int
+LOWER_BOUND: int
+UPPER_BOUND: int
 
 def version_compare2(v1: str, v2: str) -> int: ...
 def version_compare4(v1: str, v2: str, flags1: int, flags2: int) -> int: ...
