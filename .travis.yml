@@ -18,13 +18,13 @@ matrix:
       env: CC=clang LIBVERSION=master
     # libversion versions
     - python: 3.6
-      env: CC=gcc LIBVERSION=2.6.0
-    - python: 3.6
-      env: CC=gcc LIBVERSION=2.7.0
+      env: CC=gcc LIBVERSION=2.9.1
     - python: 3.6
       env: CC=gcc LIBVERSION=2.8.2
     - python: 3.6
-      env: CC=gcc LIBVERSION=2.9.1
+      env: CC=gcc LIBVERSION=2.7.0
+    - python: 3.6
+      env: CC=gcc LIBVERSION=2.6.0
 before_script:
   - pip install flake8
   - pip install flake8-builtins
