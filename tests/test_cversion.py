@@ -20,7 +20,7 @@
 
 import unittest
 
-from libversion import ANY_IS_PATCH, P_IS_PATCH, LOWER_BOUND, UPPER_BOUND, version_compare
+from libversion import ANY_IS_PATCH, LOWER_BOUND, P_IS_PATCH, UPPER_BOUND, version_compare
 
 
 class TestLibVersion(unittest.TestCase):
@@ -37,7 +37,7 @@ class TestLibVersion(unittest.TestCase):
         self.assertEqual(version_compare('1.0a1', '1.0a1', 0, ANY_IS_PATCH), -1)
         self.assertEqual(version_compare('1.0a1', '1.0a1', ANY_IS_PATCH, 0), 1)
 
-    @unittest.skipIf(LOWER_BOUND == 0 or UPPER_BOUND == 0, "LOWER_BOUND/UPPER_BOUND flags are not supported by underlying libversion, please update it to 3.0.0")
+    @unittest.skipIf(LOWER_BOUND == 0 or UPPER_BOUND == 0, 'LOWER_BOUND/UPPER_BOUND flags are not supported by underlying libversion, please update it to 3.0.0')
     def test_cversion_compare_bound_flags(self) -> None:
         self.assertEqual(version_compare('1.0a1', '1.0', 0, 0), -1)
         self.assertEqual(version_compare('1.0a1', '1.0', 0, LOWER_BOUND), 1)

@@ -21,8 +21,8 @@
 from typing import Any, Union
 
 from libversion._libversion import ANY_IS_PATCH as ANY_IS_PATCH
-from libversion._libversion import P_IS_PATCH as P_IS_PATCH
 from libversion._libversion import LOWER_BOUND as LOWER_BOUND
+from libversion._libversion import P_IS_PATCH as P_IS_PATCH
 from libversion._libversion import UPPER_BOUND as UPPER_BOUND
 from libversion._libversion import version_compare as version_compare
 from libversion._libversion import version_compare2 as version_compare2
