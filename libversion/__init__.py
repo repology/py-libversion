@@ -29,7 +29,7 @@ from libversion._libversion import version_compare2 as version_compare2
 from libversion._libversion import version_compare4 as version_compare4
 
 
-__version__ = '1.1.4'
+__version__ = '1.2.0'
 
 __all__ = [
     'version_compare2',

@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.0
+
+* Added support for libversion 3.0.0 features, `LOWER_BOUND` and
+  `UPPER_BOUND` flags
+
 ## 1.1.4
 
 * Type correctness fixes
