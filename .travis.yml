@@ -25,16 +25,10 @@ matrix:
       env: CC=gcc LIBVERSION=2.7.0
     - python: 3.6
       env: CC=gcc LIBVERSION=2.6.0
-before_script:
-  - pip install flake8
-  - pip install flake8-builtins
-  - pip install flake8-import-order
-  - pip install flake8-quotes
-  - pip install pep8-naming
-  - pip install tabulate
+install:
+  - pip install -r requirements-dev.txt
   - pip install cmp_version
   - pip install version || true  # for the case it learns python3
-  - pip install mypy
   - wget -qO- https://github.com/repology/libversion/archive/$LIBVERSION.tar.gz | tar -xzf- && ( cd libversion-$LIBVERSION && cmake . && make && sudo make install && sudo ldconfig )
 script:
   - flake8
