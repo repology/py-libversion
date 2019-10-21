@@ -9,7 +9,7 @@ matrix:
     # python versions
     - python: 3.7
       env: CC=gcc LIBVERSION=master
-    - python: 3.8-dev
+    - python: 3.8
       env: CC=gcc LIBVERSION=master
     - python: nightly
       env: CC=gcc LIBVERSION=master
