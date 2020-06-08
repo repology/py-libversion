@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import subprocess
+import sys
 from os import path
 
 from setuptools import Extension, setup
@@ -19,6 +20,21 @@ def pkgconfig(package):
         elif token.startswith('-l'):
             result.setdefault('libraries', []).append(token[2:])
     return result
+
+
+def pkgconfig_libversion():
+    try:
+        return pkgconfig('libversion')
+    except subprocess.CalledProcessError:
+        print('MISSING DEPENDENCY: libversion library not found, please install it to continue', file=sys.stderr)
+        print('\nSee https://github.com/repology/libversion#building for installation', file=sys.stderr)
+        print('instructions', file=sys.stderr)
+        sys.exit(1)
+    except FileNotFoundError:
+        print('MISSING DEPENDENCY: pkg-config not found, please install it to continue', file=sys.stderr)
+        print('\nSee https://www.freedesktop.org/wiki/Software/pkg-config/ for installation', file=sys.stderr)
+        print('instructions, or install it from your package manager', file=sys.stderr)
+        sys.exit(1)
 
 
 def get_version():
@@ -66,7 +82,7 @@ setup(
         Extension(
             'libversion._libversion',
             sources=['src/_libversion.c'],
-            **pkgconfig('libversion')
+            **pkgconfig_libversion()
         )
     ],
     test_suite='tests'
