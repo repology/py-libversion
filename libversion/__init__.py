@@ -1,4 +1,4 @@
-# Copyright (c) 2019 Dmitry Marakasov <amdmi3@amdmi3.ru>
+# Copyright (c) 2019-2020 Dmitry Marakasov <amdmi3@amdmi3.ru>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@ from libversion._libversion import version_compare2 as version_compare2
 from libversion._libversion import version_compare4 as version_compare4
 
 
-__version__ = '1.2.0'
+__version__ = '1.2.1'
 
 __all__ = [
     'version_compare2',

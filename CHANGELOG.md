@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.1
+
+* Provide more clear messages on missing dependencies
+
 ## 1.2.0
 
 * Added support for libversion 3.0.0 features, `LOWER_BOUND` and
