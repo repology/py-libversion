@@ -1,5 +1,5 @@
 language: python
-dist: xenial
+dist: focal
 sudo: required
 matrix:
   include:
@@ -10,6 +10,8 @@ matrix:
     - python: 3.7
       env: CC=gcc LIBVERSION=master
     - python: 3.8
+      env: CC=gcc LIBVERSION=master
+    - python: 3.9-dev
       env: CC=gcc LIBVERSION=master
     - python: nightly
       env: CC=gcc LIBVERSION=master
