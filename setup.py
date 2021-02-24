@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import shlex
 import subprocess
 import sys
 from os import path
@@ -12,7 +13,8 @@ here = path.abspath(path.dirname(__file__))
 
 def pkgconfig(package):
     result = {}
-    for token in subprocess.check_output(['pkg-config', '--libs', '--cflags', package]).decode('utf-8').split():
+    pkg_config_output = subprocess.check_output(['pkg-config', '--libs', '--cflags', package]).decode('utf-8')
+    for token in shlex.split(pkg_config_output):
         if token.startswith('-I'):
             result.setdefault('include_dirs', []).append(token[2:])
         elif token.startswith('-L'):
