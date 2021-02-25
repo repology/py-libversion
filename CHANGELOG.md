@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.2
+
+* Fix build when pkg-config returns paths with spaces
+
 ## 1.2.1
 
 * Provide more clear messages on missing dependencies
