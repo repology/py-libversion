@@ -21,6 +21,18 @@ def pkgconfig(package):
             result.setdefault('library_dirs', []).append(token[2:])
         elif token.startswith('-l'):
             result.setdefault('libraries', []).append(token[2:])
+        elif token.startswith('-D'):
+            split_result = token[2:].split('=', maxsplit=1)
+            if len(split_result) == 2:
+                name, value = split_result
+            elif len(split_result) == 1:
+                name = split_result[0]
+                value = None
+            else:
+                assert False
+            result.setdefault('define_macros', []).append((name, value))
+        elif token.startswith('-U'):
+            result.setdefault('undef_macros', []).append(token[2:])
     return result
 
 
