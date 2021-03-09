@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.3
+
+* Honor -D/-U arguments from pkg-config
+
 ## 1.2.2
 
 * Fix build when pkg-config returns paths with spaces
