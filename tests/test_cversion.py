@@ -20,7 +20,8 @@
 
 import unittest
 
-from libversion import ANY_IS_PATCH, LOWER_BOUND, P_IS_PATCH, UPPER_BOUND, version_compare
+from libversion import (ANY_IS_PATCH, LOWER_BOUND, P_IS_PATCH, UPPER_BOUND,
+                        version_compare)
 
 
 class TestLibVersion(unittest.TestCase):

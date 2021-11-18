@@ -18,7 +18,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-from typing import Any, Union
+from typing import Any
 
 from libversion._libversion import ANY_IS_PATCH as ANY_IS_PATCH
 from libversion._libversion import LOWER_BOUND as LOWER_BOUND
@@ -27,7 +27,6 @@ from libversion._libversion import UPPER_BOUND as UPPER_BOUND
 from libversion._libversion import version_compare as version_compare
 from libversion._libversion import version_compare2 as version_compare2
 from libversion._libversion import version_compare4 as version_compare4
-
 
 __version__ = '1.2.3'
 
@@ -60,32 +59,32 @@ class Version:
     def __str__(self) -> str:
         return self.value
 
-    def __eq__(self, other: Any) -> Union[bool, 'NotImplemented']:
+    def __eq__(self, other: Any) -> bool:
         if isinstance(other, Version):
             return version_compare(self.value, other.value, self.flags, other.flags) == 0
         return NotImplemented
 
-    def __ne__(self, other: Any) -> Union[bool, 'NotImplemented']:
+    def __ne__(self, other: Any) -> bool:
         if isinstance(other, Version):
             return version_compare(self.value, other.value, self.flags, other.flags) != 0
         return NotImplemented
 
-    def __lt__(self, other: Any) -> Union[bool, 'NotImplemented']:
+    def __lt__(self, other: Any) -> bool:
         if isinstance(other, Version):
             return version_compare(self.value, other.value, self.flags, other.flags) < 0
         return NotImplemented
 
-    def __le__(self, other: Any) -> Union[bool, 'NotImplemented']:
+    def __le__(self, other: Any) -> bool:
         if isinstance(other, Version):
             return version_compare(self.value, other.value, self.flags, other.flags) <= 0
         return NotImplemented
 
-    def __gt__(self, other: Any) -> Union[bool, 'NotImplemented']:
+    def __gt__(self, other: Any) -> bool:
         if isinstance(other, Version):
             return version_compare(self.value, other.value, self.flags, other.flags) > 0
         return NotImplemented
 
-    def __ge__(self, other: Any) -> Union[bool, 'NotImplemented']:
+    def __ge__(self, other: Any) -> bool:
         if isinstance(other, Version):
             return version_compare(self.value, other.value, self.flags, other.flags) >= 0
         return NotImplemented
