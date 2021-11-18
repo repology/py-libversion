@@ -81,6 +81,7 @@ setup(
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
         'Topic :: Software Development :: Version Control',
         'Topic :: System :: Archiving :: Packaging',
         'Topic :: System :: Software Distribution',
