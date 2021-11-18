@@ -1,0 +1,64 @@
+name: CI
+on: [ push, pull_request ]
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { python: '3.8', cc: gcc, libversion: master }
+          # python versions
+          - { python: '3.6', cc: gcc, libversion: master }
+          - { python: '3.7', cc: gcc, libversion: master }
+          - { python: '3.9', cc: gcc, libversion: master }
+          - { python: '3.10', cc: gcc, libversion: master }
+          - { python: '3.11.0-alpha.2', cc: gcc, libversion: master }
+          # compilers
+          - { python: '3.8', cc: clang, libversion: master }
+          # libversion versions
+          - { python: '3.8', cc: gcc, libversion: 2.9.1 }
+          - { python: '3.8', cc: gcc, libversion: 2.8.1 }
+          - { python: '3.8', cc: gcc, libversion: 2.7.0 }
+          - { python: '3.8', cc: gcc, libversion: 2.6.0 }
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install libversion
+        run: |
+          sudo apt-get install cmake
+          wget -qO- https://github.com/repology/libversion/archive/${{ matrix.libversion }}.tar.gz | tar -xzf-
+          cd libversion-${{ matrix.libversion }}
+          cmake .
+          cmake --build .
+          sudo cmake --install .
+          sudo ldconfig
+      - name: Install dev depends
+        run: pip install -r requirements-dev.txt
+      - name: Install benchmark competitiors
+        run: |
+          pip install cmp_version
+          pip install version || true  # for the case it learns python3
+      - name: Set up environment
+        run: |
+          echo 'CC=${{ matrix.cc }}' >> $GITHUB_ENV
+          echo 'CFLAGS=-UNDEBUG -Wall -Wextra -Werror -Wno-error=deprecated-declarations' >> $GITHUB_ENV  # warning for python 3.8 only
+      - name: Build
+        run: python setup.py build
+      - name: Install
+        run: python setup.py develop
+      - name: Run flake8
+        run: make flake8
+      - name: Run tests
+        run: make test
+      - name: Run mypy
+        run: make test
+      - name: Run isort-check
+        run: make isort-check
+      - name: Run compare
+        run: cd demos && python compare.py
+      - name: Run benchmark
+        run: cd demos && python benchmark.py

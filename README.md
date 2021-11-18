@@ -4,7 +4,7 @@
 	<img src="https://repology.org/badge/vertical-allrepos/python:libversion.svg" alt="py-libversion packaging status" align="right">
 </a>
 
-[![Build Status](https://travis-ci.org/repology/py-libversion.svg?branch=master)](https://travis-ci.org/repology/py-libversion)
+[![CI](https://github.com/repology/py-libversion/actions/workflows/ci.yml/badge.svg)](https://github.com/repology/py-libversion/actions/workflows/ci.yml)
 [![PyPI downloads](https://img.shields.io/pypi/dm/libversion.svg)](https://pypi.org/project/libversion/)
 [![PyPI version](https://img.shields.io/pypi/v/libversion.svg)](https://pypi.org/project/libversion/)
 [![PyPI pythons](https://img.shields.io/pypi/pyversions/libversion.svg)](https://pypi.org/project/libversion/)
