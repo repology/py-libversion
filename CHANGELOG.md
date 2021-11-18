@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.4
+
+* Typing and style fixes
+
 ## 1.2.3
 
 * Honor -D/-U arguments from pkg-config
